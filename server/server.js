@@ -23,7 +23,7 @@ const server = http.createServer(app);
 // Initialize Socket.IO
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: `${process.env.FRONTEND_URL}`,
     methods: ["GET", "POST"]
   }
 });
@@ -91,4 +91,5 @@ server.listen(PORT, () => {
 });
 
 // module.exports = { app, io };
+
 
