@@ -13,7 +13,8 @@ const InterviewScreen = () => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:5000');
+    
+    socketRef.current = io(`${process.env.REACT_APP_BACKEND_URL}`);
     
     socketRef.current.on('new-alert', (alert) => {
       setAlerts(prev => [...prev, alert]);
@@ -118,3 +119,4 @@ const InterviewScreen = () => {
 };
 
 export default InterviewScreen;
+
