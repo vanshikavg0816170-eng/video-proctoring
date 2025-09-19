@@ -21,18 +21,40 @@ const app = express();
 const server = http.createServer(app);
 
 // Initialize Socket.IO
+
 const io = socketIo(server, {
   cors: {
-    origin: `${process.env.FRONTEND_URL}`,
-    methods: ["GET", "POST"]
+    origin: [
+      process.env.FRONTEND_URL,
+      "https://video-proctoring-8o0i.onrender.com",
+      "http://localhost:3000"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
   }
 });
+// const io = socketIo(server, {
+//   cors: {
+//     origin: `${process.env.FRONTEND_URL}`,
+//     methods: ["GET", "POST"]
+//   }
+// });
 
 // Connect to MongoDB
 connectDB();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    process.env.FRONTEND_URL,
+    "https://video-proctoring-8o0i.onrender.com", 
+    "http://localhost:3000"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -90,6 +112,7 @@ server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
  module.exports = { app, io };
+
 
 
 
