@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import InterviewScreen from './components/InterviewScreen';
 import ProctorReport from './components/ProctorReport';
+import ReportsTest  from "./components/test";
 import './styles/App.css';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
           <h1>Video Proctoring System</h1>
         </header>
         <Routes>
-          <Route path="/" element={<InterviewScreen />} />
+          <Route path="/" element={<ReportsTest />} />
           <Route path="/interview/:id" element={<InterviewScreen />} />
           <Route path="/report/:id" element={<ProctorReport />} />
         </Routes>
@@ -22,3 +23,4 @@ function App() {
 }
 
 export default App;
+
