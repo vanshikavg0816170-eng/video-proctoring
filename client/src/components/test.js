@@ -9,7 +9,7 @@ const ReportsTest = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:5000/api/reports"); 
+      const res = await fetch(`${process.env.React_App_Backend_Url}/api/reports`); 
       // 🔥 change to your deployed backend URL when testing on Render
       const data = await res.json();
 
