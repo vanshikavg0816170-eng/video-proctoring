@@ -83,16 +83,37 @@ router.get('/:interviewId', async (req, res) => {
 });
 
 // Get all reports
+// router.get('/', async (req, res) => {
+//   try {
+//     const reports = await Report.find()
+//       .populate('interviewId')
+//       .sort({ createdAt: -1 })
+//       .limit(50);
+    
+//     res.json({
+//       success: true,
+//       reports
+//     });
+//   } catch (error) {
+//     console.error('Error fetching reports:', error);
+//     res.status(500).json({
+//       success: false,
+//       message: 'Failed to fetch reports'
+//     });
+//   }
+// });
 router.get('/', async (req, res) => {
   try {
-    const reports = await Report.find()
-      .populate('interviewId')
-      .sort({ createdAt: -1 })
-      .limit(50);
-    
+    // Dummy test data
+    const testReports = [
+      { id: 1, title: "Report 1", status: "Completed" },
+      { id: 2, title: "Report 2", status: "Pending" },
+      { id: 3, title: "Report 3", status: "In Progress" }
+    ];
+
     res.json({
       success: true,
-      reports
+      reports: testReports
     });
   } catch (error) {
     console.error('Error fetching reports:', error);
@@ -133,3 +154,4 @@ router.put('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
