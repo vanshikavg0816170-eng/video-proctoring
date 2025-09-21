@@ -13,7 +13,7 @@ function App() {
           <h1>Video Proctoring System</h1>
         </header>
         <Routes>
-          <Route path="/" element={<ReportsTest />} />
+          <Route path="/" element={<InterviewScreen />} />
           <Route path="/interview/:id" element={<InterviewScreen />} />
           <Route path="/report/:id" element={<ProctorReport />} />
         </Routes>
@@ -23,4 +23,5 @@ function App() {
 }
 
 export default App;
+
 
